@@ -11,23 +11,35 @@
     <name>this is a spring internal example with i18n</name>
     <url>http://maven.apache.org</url>
     <properties>
-        <springframework>4.3.5.RELEASE</springframework>
-        <servlet>3.1.0</servlet>
+        <servlet.version>3.1.0</servlet.version>
+        <springframework.version>4.3.5.RELEASE</springframework.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>4.3.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet}</version>
+            <version>${servlet.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Spring web mvc -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${springframework}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

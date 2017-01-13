@@ -13,18 +13,16 @@
 
     <!-- 启用MVC注解 -->
     <mvc:annotation-driven/>
-    <!-- 默认首页 -->
-    <mvc:view-controller path="/" view-name="internal/welcome"/>
-
     <!-- 指定Sping组件扫描的基本包路径 -->
-    <context:component-scan base-package="com.example">
-        <!-- 这里只扫描Controller -->
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
+    <context:component-scan base-package="com.example"/>
+
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
 
     <!-- JSP视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/jsp/"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
         <property name="order" value="1"/>
     </bean>
@@ -39,9 +37,16 @@
     <!-- 基于Cookie的本地化解析器 -->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
         <property name="cookieMaxAge" value="604800"/>
-        <property name="defaultLocale" value="zh_CN"/>
+        <property name="defaultLocale" value="en"/>
         <property name="cookieName" value="Language"></property>
     </bean>
     <!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />-->
 
-</beans>  
+    <!-- 拦截controller接口中的language参数(默认名为locale),如果获取到值, 动态设置到国际化配置里 -->
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="language"/>
+        </bean>
+    </mvc:interceptors>
+
+</beans>

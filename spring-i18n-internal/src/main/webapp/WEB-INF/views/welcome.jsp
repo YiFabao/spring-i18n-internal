@@ -20,9 +20,9 @@
 
 <body>
 <h2><spring:message code="hi"></spring:message></h2>
-<a href="internal/language?language=zh_CN"><spring:message code="Chinese"></spring:message></a>
-<a href="internal/language?language=en"><spring:message code="English"></spring:message></a>
+<a href="updateLanguage?language=zh_CN"><spring:message code="Chinese"></spring:message></a>
+<a href="updateLanguage?language=en"><spring:message code="English"></spring:message></a>
 <br/><br/>
-<a href="internal/something"><spring:message code="OtherPage"></spring:message></a>
+<a href="/something"><spring:message code="OtherPage"></spring:message></a>
 </body>
 </html>
