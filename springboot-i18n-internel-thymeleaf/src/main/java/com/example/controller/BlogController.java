@@ -14,21 +14,13 @@ public class BlogController {
     @Autowired
     private Writer writer;
 
-    @RequestMapping(value = "/")
-    public ModelAndView getBlog(ModelAndView mv) {
-        mv.addObject("currentDate", new Date());
-        mv.addObject("writers", writer.getWriters());
-        mv.setViewName("myblog");
-        return mv;
-    }
-
     /**
-     * 修改国际化语言
-     * http://localhost:8080/updateLanguage?locale=en
-     * 或http://localhost:8080/updateLanguage?locale=zh_CN
+     * 直接修改国际化语言
+     * http://localhost:8080?locale=en
+     * 或http://localhost:8080?locale=zh_CN
      */
-    @RequestMapping(value = "/updateLanguage")
-    public ModelAndView getBlogCN(Locale locale, ModelAndView mv) {
+    @RequestMapping(value = {"/", "/index"})
+    public ModelAndView getBlog(Locale language, ModelAndView mv) {
         mv.addObject("currentDate", new Date());
         mv.addObject("writers", writer.getWriters());
         mv.setViewName("myblog");
@@ -40,7 +32,7 @@ public class BlogController {
      */
     @RequestMapping(value = "/en")
     public String selectEN() {
-        return "redirect:updateLanguage?locale=en";
+        return "redirect:index?language=en";
     }
 
     /**
@@ -48,6 +40,6 @@ public class BlogController {
      */
     @RequestMapping(value = "/cn")
     public String selectCN() {
-        return "redirect:updateLanguage?locale=zh_CN";
+        return "redirect:index?language=zh_CN";
     }
 }

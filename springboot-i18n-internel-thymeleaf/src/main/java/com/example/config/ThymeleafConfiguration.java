@@ -67,8 +67,8 @@ public class ThymeleafConfiguration extends WebMvcConfigurerAdapter {
      */
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-        //spring 默认修改国际化语言参数名就是locale
-//        interceptor.setParamName("mylocale");
+        //spring 默认拦截controller接口参数名就是locale, 这里自定义为language
+        interceptor.setParamName("language");
         registry.addInterceptor(interceptor);
     }
 
