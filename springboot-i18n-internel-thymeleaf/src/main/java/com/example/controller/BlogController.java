@@ -34,4 +34,20 @@ public class BlogController {
         mv.setViewName("myblog");
         return mv;
     }
+
+    /**
+     * 每次都访问英文
+     */
+    @RequestMapping(value = "/en")
+    public String selectEN() {
+        return "redirect:updateLanguage?locale=en";
+    }
+
+    /**
+     * 每次都访问中文
+     */
+    @RequestMapping(value = "/cn")
+    public String selectCN() {
+        return "redirect:updateLanguage?locale=zh_CN";
+    }
 }
