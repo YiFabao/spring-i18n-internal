@@ -2,6 +2,7 @@ spring-i18n-internal.iml
 target/
 .idea/
 *.class
+*.iml
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
