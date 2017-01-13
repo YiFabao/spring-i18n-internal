@@ -11,14 +11,6 @@ import java.net.UnknownHostException;
 @SpringBootApplication(scanBasePackages = "com.example")
 public class Application {
 
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/templates/");
-        resolver.setSuffix(".jsp");
-        return resolver;
-    }
-
     public static void main(String[] args) throws UnknownHostException {
         SpringApplication app = new SpringApplication(Application.class);
         app.run(args);
