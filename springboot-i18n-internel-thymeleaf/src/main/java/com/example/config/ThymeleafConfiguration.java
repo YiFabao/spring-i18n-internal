@@ -38,7 +38,7 @@ public class ThymeleafConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
     }
 
-    /*
+    /**
      *  加载国际化资源文件
      */
     @Bean
@@ -62,7 +62,8 @@ public class ThymeleafConfiguration extends WebMvcConfigurerAdapter {
     }
 
     /**
-     * 修改国际化语言
+     * 通过spring内置国际化拦截器, 实现动态修改国际化语言
+     * 从controller参数中,获取名为locale的国际化参数
      */
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
